@@ -71,7 +71,7 @@ app.get('/api', function api_index(req, res) {
 app.get('/api/profile', function profile_index(req, res){
     res.json({profile: profile});
   });
-});
+
 
 /*Get all architect*/
 app.get('/api/architects', function architect_index(req, res){
