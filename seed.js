@@ -50,7 +50,7 @@ var architect_list = [
   {
     name: "Daniel Libeskind",
     year_born: 1946,
-    nationality: "polish"
+    nationality: "polish",
     deceased: false,
     image: "http://imgur.com/INqCoeS",
     notable_works: [{
@@ -81,15 +81,15 @@ var notable_works = [
     name: "Contemporary Jewish Musuem",
     image: "http://imgur.com/r3fnxJ8"
   }
-]
+];
 
-db.Profile.remove({}, function(err, profile){
+db.Architect.remove({}, function(err, profile){
   console.log('removed profile info');
-  db.Profile.create(profile, function(err, newProfile){
+  db.Architect.create(profile, function(err, newArchitect){
     if (err) {
       return console.log(err);
     }
-    console.log(newProfile);
+    console.log(newArchitect);
   });
 });
 

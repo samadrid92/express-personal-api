@@ -69,11 +69,7 @@ app.get('/api', function api_index(req, res) {
 });
 /* Get Profile Information */
 app.get('/api/profile', function profile_index(req, res){
-  profile.find(function(err, foundProfile){
-    if (err) {
-      return console.log("index error: " + err);
-    }
-    res.json(foundProfile);
+    res.json({profile: profile});
   });
 });
 
@@ -97,22 +93,29 @@ app.get('/api/architects/:id', function architect_show(req, res){
   });
 });
 /*create a new architect*/
-app.post('/api/architects', function architect_create(req, res){
-  var newArchitect = new db.Architect({
-    name: req.body.name,
-    year_born: req.body.year_born,
-    nationality: req.body.nationality,
-    deceased: req.body.deceased,
-    image: req.body.image
-  });
-});
-  newArchitect.save(function(err, architect){
-    if (err) {
-      return console.log("save error: " + err);
-    }
-    console.log("saved ", architect.name);
-    res.json(architect);
-  });
+// app.post('/api/architects', function architect_create(req, res){
+//   var newArchitect = new db.Architect({
+//     name: req.body.name,
+//     year_born: req.body.year_born,
+//     nationality: req.body.nationality,
+//     deceased: req.body.deceased,
+//     image: req.body.image
+//   });
+// });
+//   newArchitect.save(function(err, architect){
+//     if (err) {
+//       return console.log("save error: " + err);
+//     }
+//     console.log("saved ", architect.name);
+//     res.json(architect);
+//   });
+  /*update a architect*/
+  // app.put('/api/architects/:id', function architect_update(req, res){
+  //   var architectId =
+  // })
+
+  /*delete a architect*/
+
 
 /**********
  * SERVER *
