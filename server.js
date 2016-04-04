@@ -85,7 +85,7 @@ app.get('/api/architects', function architect_index(req, res){
 
 /*Show a architect*/
 app.get('/api/architects/:id', function architect_show(req, res){
-  db.Architect.findById(req.params.id, function(err, foundArchitect){
+  db.Architect.findById({_id: req.params.id}, function(err, foundArchitect){
     if (err){
       return console.log("show error: " + err);
     }
@@ -115,6 +115,13 @@ app.get('/api/architects/:id', function architect_show(req, res){
   // })
 
   /*delete a architect*/
+  app.delete('/api/architects/:id', function (req, res){
+    var architectId = req.params.id;
+    db.Architect.findOneandRemove({_id: architectId}, function (err, deletedArchitect){
+      res.json(deletedArchitect);
+    });
+  });
+
 
 
 /**********

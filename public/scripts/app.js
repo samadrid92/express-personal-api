@@ -5,7 +5,7 @@ $(document).ready(function(){
 // your code
   $.ajax({
     method: 'GET',
-    url: '/api/profile',
+    url: '/api/architects',
     success: OnSuccess,
     error: OnError
   });

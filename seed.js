@@ -83,14 +83,22 @@ var notable_works = [
   }
 ];
 
-db.Architect.remove({}, function(err, profile){
-  console.log('removed profile info');
-  db.Architect.create(profile, function(err, newArchitect){
-    if (err) {
-      return console.log(err);
-    }
-    console.log(newArchitect);
-  });
+// remove all records that match {} -- which means remove ALL records
+db.Architect.remove({}, function(err, architects){
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('removed all architects');
+
+    // create new records based on the array architect_list
+    db.Architect.create(architect_list, function(err, architects){
+      if (err) {
+        return console.log('err', err);
+      }
+      console.log("created", architects.length, "architects");
+      process.exit();
+    });
+  }
 });
 
 
